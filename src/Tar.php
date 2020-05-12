@@ -140,8 +140,8 @@ class Tar extends Archive
         }
 
         $outdir = rtrim($outdir, '/');
-        @mkdir($outdir, 0777, true);
-        if (!is_dir($outdir)) {
+
+        if (!is_dir($outdir) && !mkdir($outdir, 0777, true)) {
             throw new ArchiveIOException("Could not create directory '$outdir'");
         }
 
